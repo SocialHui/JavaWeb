@@ -1,0 +1,66 @@
+<html>
+<head>
+    <metra charset="utf-8"></metra>
+    <title>加法计算器</title>
+    <style>
+        .fun{
+            margin-left: 480px;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        function myck(type) {
+            var num1 = document.getElementById("num1");
+            var num2 = document.getElementById("num2");
+            if (type == 1) {
+                //代表要开始求和操作
+                if (num1.value == "") {
+                    alert("请输入数字1");
+                    return false;
+                }
+                if (num2.value == "") {
+                    alert("请输入数字2");
+                    return false;
+                }
+                var sum = parseInt(num1.value)+parseInt(num2.value)
+                alert(sum);
+                //以下这种写法将页面所有的内容全部替换为下面这一句了
+                //document.write("最终计算结果为："+sum);
+                document.getElementById("resultDiv").innerText = "最终计算结果为："+sum;
+            } else if (type == 2) {
+                //代表要进行清空
+                if (confirm("是否确认清空")) {
+                    num1.value="";
+                    num2.value="";
+                    document.getElementById("resultDiv").innerText="";
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+     <div style="margin-top: 150px; margin-left: 530px; font-size: 30px;">
+         <strong>加法计算器</strong>
+     </div>
+
+     <div class="fun">
+         数字1：<input id="num1" type="number" placeholder="请输入数字1">
+     </div>
+
+     <div class="fun">
+         数字2：<input id="num2" type="number" placeholder="请输入数字2">
+     </div>
+
+     <div style="margin-left: 550px; margin-top: 15px;">
+         <input style="font-size: 20px;" type="button" onclick="myck(1)" value="求和">&nbsp;&nbsp;&nbsp;&nbsp;
+         <input style="font-size: 20px;" type="button" onclick="myck(2)" value="清空">
+     </div>
+
+     <div id="resultDiv">
+
+     </div>
+
+</body>
+</html>
