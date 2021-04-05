@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客注册</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function myck(type) {
+            var username = jQuery("#username");
+            var pwd = jQuery("#pwd");
+            var pwd1 = jQuery("#pwd1");
+            if (type == 2) {
+                //代表要进行清空操作
+                if (confirm("确认进行清空吗？")) {
+                    username.val("");
+                    pwd.val("");
+                    pwd1.val("");
+                }
+                return false;
+            }
+            if (username.val().trim() == "") {
+                alert("请输入用户名");
+                username.focus();
+                return false;
+            }
+            if (pwd.val().trim() == "") {
+                alert("请输入密码");
+                pwd.focus();
+                return false;
+            }
+            if (pwd1.val().trim() == "") {
+                alert("请输入确认密码");
+                pwd1.focus();
+                return false;
+            }
+            if (pwd.val() != pwd1.val()) {
+                alert("两次输入的密码不相同");
+                pwd.focus();
+                return false;
+            }
+            //到这一步代表前端输入全部正常了
+            //去后端看是否存在这样的用户，
+            //如果存在，则注册失败
+            //如果不存在，注册成功，并且将数据写入数据库，完成操作
+            jQuery.getJSON("reg",{
+                "username":username.val(),
+                "pwd":pwd.val()
+            },function (data) {
+                if (data != null && data.state == 200) {
+                    alert("注册成功");
+                } else {
+                    alert("注册失败");
+                }
+                });
+        }
+    </script>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 100px;">
+        <h1>注册</h1>
+        用户名：<input id="username" name="username" type="text"><p></p>
+        密码：<input id="pwd" name="pwd" type="password"><p></p>
+        确认密码：<input id="pwd1" name="pwa1" type="password"><p></p>
+        <input type="button" value="提交" onclick="myck(1)">
+        <input type="button" value="清空" onclick="myck(2)">
+    </div>
+</body>
+</html>

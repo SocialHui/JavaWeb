@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function myck(type) {
+            var username = jQuery("#username");
+            var pwd = jQuery("#pwd");
+            if (type == 2) {
+                if (confirm("是否确认清空？")) {
+                    username.val("");
+                    pwd.val("");
+                }
+                return false;
+            }
+            if (username.val().trim() == "") {
+                alert("请输入用户名");
+                username.focus();
+                return false;
+            }
+            if (pwd.val().trim() == "") {
+                alert("请输入密码");
+                pwd.focus();
+                return false;
+            }
+            jQuery.getJSON("login",{
+                "username":username.val(),
+                "pwd":pwd.val()
+            },function (data) {
+                if (data != null && data.state == 200) {
+                    alert("登录成功");
+                } else {
+                    alert("登录失败");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+     <div style="text-align: center; margin-top: 100px;">
+         <h1>登录</h1>
+         用户名：<input id="username" name="username" type="text"><p></p>
+         密码：<input id="pwd" name="pwd" type="password"><p></p>
+         <input type="button" value="提交" onclick="myck(1)">
+         <input type="button" value="清空" onclick="myck(2)">
+     </div>
+</body>
+</html>
