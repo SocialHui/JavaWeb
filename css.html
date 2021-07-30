@@ -1,0 +1,41 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录界面</title>
+    <style>
+        .function{
+            margin-left: 500px;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        /* div{
+            margin-left: 500px;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        像上面的这样的，如果方法名前面没有加 . 那就代表下面的所有的div包起来的都默认调用这个css方法，不需要显示调用
+        */
+    </style>
+</head>
+
+<body>
+
+<div style="margin-left: 600px; margin-top: 130px; ">
+    <span style="font-size: 60px;">登录</span> <p></p>
+</div>
+ <!-- 上面的CSS加 . 了，在下面的调用的方法就是class="function" -->
+ --
+<p class="function"><strong>用户名：</strong><input type="text" placeholder="请输入用户名"></p>
+<p class="function"><strong>密&nbsp;&nbsp;&nbsp;码：</strong><input type="password" placeholder="请输入密码"></p>
+
+<div style="margin-left: 550px;margin-top: 25px;">
+    <div>
+        <input style="font-size: 18px;" type="button" value="登录"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input style="font-size: 18px;" type="button" value="清空">
+    </div>
+</div>
+
+</body>
+</html>
