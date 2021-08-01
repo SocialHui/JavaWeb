@@ -13,18 +13,18 @@
 
     <script>
         function myck(type) {
-            var num1 = document.getElementById("num1");
+            var num1 = document.getElementById("num1");    // var 表示所有类型，JavaScript里面都是弱引用
             var num2 = document.getElementById("num2");
             if (type == 4) {
                 //清空操作
-                if (confirm("是否确认清空")) {
+                if (confirm("是否确认清空")) {  //js提示框，若点击确定，则执行if里面的语句
                     num1.value="";
                     num2.value="";
                     document.getElementById("result").innerText = "";
                 }
             } else {
                 if (num1.value=="") {
-                    alert("请输入数字1");
+                    alert("请输入数字1");   //弹窗
                     return false;
                 }
                 if (num2.value=="") {
@@ -32,8 +32,9 @@
                     return false;
                 }
                 if (type == 1) {
-                    var sum = parseInt(num1.value)+parseInt(num2.value);
+                    var sum = parseInt(num1.value)+parseInt(num2.value);  //parseInt()  是将字符串转换为整形
                     document.getElementById("result").innerText = "最终计算结果为：" + sum;
+                    // document.getElementById(" ").innerHtml = "";   通过JS改变页面内容
                 } else if(type == 2) {
                     var num = parseInt(num1.value)-parseInt(num2.value);
                     document.getElementById("result").innerText = "最终计算结果为：" + num;
@@ -64,7 +65,7 @@
           <input type="button" onclick="myck(1)" value="相加">
           <input type="button" onclick="myck(2)" value="相减">
           <input type="button" onclick="myck(3)" value="相乘">
-          <input type="button" onclick="myck(4)" value="清空">
+          <input type="button" onclick="myck(4)" value="清空">   <!-- onlick 点击事件-->
       </div>
 
       <div id="result">
