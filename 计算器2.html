@@ -24,7 +24,7 @@
                     document.getElementById("result").innerText = "";
                 }
             } else {
-                if (num1.val()=="") {
+                if (num1.val().trim()=="") {
                     alert("请输入数字1");
                     num1.focus();
                     return false;

@@ -10,22 +10,22 @@
                margin-top: 15px;
            }
        </style>
-       <script src="jquery-1.9.1.min.js"></script>
+       <script src="jquery-1.9.1.min.js"></script>    //1.引用jQuery
        <script>
            function myck(type) {
-               var num1 = jQuery("#num1");
+               var num1 = jQuery("#num1");   //通过id拿到对应的控件
                var num2 = jQuery("#num2");
                var res = jQuery("#result");
                if (type == 4) {
                    if (confirm("确认清空？")) {
-                       num1.val("");
+                       num1.val("");       //num1对应的id的val的值设为空
                        num2.val("");
                        res.text("");
                    }
                } else {
-                   if (num1.val().trim() == "") {
+                   if (num1.val().trim() == "") {   //.trim 清空空格
                        alert("请输入数字1");
-                       num1.focus();
+                       num1.focus();      //将光标定位到当前输入框
                        return false;
                    }
                    if (num2.val().trim() == "") {
@@ -35,7 +35,7 @@
                    }
                    if (type == 1) {
                        var sum = parseInt(num1.val()) + parseInt(num2.val());
-                       res.text("最终结果为："+sum);
+                       res.text("最终结果为："+sum);   //通过jQuery改变页面内容
                    } else if (type == 2) {
                        var sum = parseInt(num1.val()) - parseInt(num2.val());
                        res.text("最终结果为："+sum);
